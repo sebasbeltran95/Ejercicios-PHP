@@ -1,6 +1,7 @@
 <?php
 
 
+
 class persona{ 
 
     public $nombre; //propiedades
@@ -23,15 +24,18 @@ class persona{
 
     }
 }
+class trabajador extends persona { 
 
-$objAlumno = new persona(); // instancia o creacion de un objeto
-$objAlumno->asignarNombre("sebas");
+    public $puesto; // propiead nueva
+    public function presentarseComoTrabajador(){ 
+        echo "Hola soy ".$this->nombre." y soy un ".$this->puesto;
 
-$objAlumno2 = new persona(); // instancia o creacion de un objeto
-$objAlumno2->asignarNombre("pedro");
-$objAlumno2->imprimirNombre();
+    }
 
+}
 
-echo $objAlumno->nombre."<br>"; //imprimir una propiedad 
-echo $objAlumno2->nombre; //imprimir una propiedad 
-echo $objAlumno2->mostrarEdad();
+$objTrabajador = new trabajador(); // instancia o creacion de un objeto
+$objTrabajador->asignarNombre("pedro");
+$objTrabajador->puesto="profesor";
+
+$objTrabajador->presentarseComoTrabajador();
