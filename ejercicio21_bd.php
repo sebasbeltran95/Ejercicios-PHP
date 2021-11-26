@@ -9,8 +9,18 @@ $servidor = "localhost"; // 127.0.0.1
     $conexion = new PDO("mysql:host = $servidor; dbname = album", $usuario, $contraseña);
     $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql = "INSERT INTO `fotos` (`id`, `nombre`, `ruta`) VALUES (NULL, 'prueba1', 'prueba1.jpg');";
-    $conexion->exec($sql);
+    $sql = "SELECT * FROM `fotos`";
+
+    $sentencia = $conexion->prepare($sql);
+    $sentencia->execute();
+
+    $resultado = $sentencia->fetchAll();
+
+    print_r($resultado);
+
+    foreach($resultado as $foto){ 
+    echo $foto['nombre']."<br>";
+    }
 
     echo"Conexion establecida"; 
 
@@ -18,5 +28,4 @@ $servidor = "localhost"; // 127.0.0.1
 
     echo"Conexion Erronea".$error;
 }
-
 
