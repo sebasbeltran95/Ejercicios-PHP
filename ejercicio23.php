@@ -16,8 +16,9 @@ if($_POST){
     $chkhtml=(isset($_POST['chkhtml']) == "si")?"checked":"";
     $chkcss=(isset($_POST['chkcss']) == "si")?"checked":"";
 
-    $lsAnime=(isset($_POST['lsAnime'])?$_POST['lsAnime']:"");
+    $lsAnime=(isset($_POST['lsAnime']))?$_POST['lsAnime']:"";
 
+    // print_r($_POST);
     // print_r($_POST);
     // print_r($rdg_lenguaje);
 }
@@ -32,11 +33,18 @@ if($_POST){
 </head>
 <body>
     <?php if($_POST){ ?>
-   <strong>Hola</strong>:  <?php echo $txtNombre;?> <br>
-   <strong>El lenguaje que te gusta es:</strong>:  <?php echo $rdg_lenguaje;?> <br>
-   <strong>lo que estas aprendiendo es:</strong>:  <?php echo $chkphp;?> <br>
-   <strong>lo que estas aprendiendo es:</strong>:  <?php echo $chkhtml;?> <br>
-   <strong>lo que estas aprendiendo es:</strong>:  <?php echo $chkcss;?> <br>
+    <strong>Hola</strong>:  <?php echo $txtNombre;?> 
+    <br>
+    <strong>El lenguaje que te gusta es:</strong>:  <?php echo $rdg_lenguaje;?> 
+    <br>
+    <strong>Estas aprendiendo:</strong>: 
+    - <?php echo ($chkphp == "checked")?"php":"";?> <br>
+    - <?php echo ($chkhtml == "checked")?"html":"";?> <br>
+    - <?php echo ($chkcss == "checked")?"css":"";?> <br>
+    <br>
+    <strong>Que anime te gusta:</strong>:
+    <?php echo $lsAnime;?>
+    <br>
    <?php }?>
     <form action="ejercicio23.php" method="POST">
         Nombre:<br>
@@ -55,12 +63,12 @@ if($_POST){
         <br>
         ¿Que anime te gusta?.. <br>
         <!-- solo se peude seleccionar una opcion no varias -->
-        <select name="lsAnime" id="" disabled="disabled"> 
-            <option value="ninguna">[Ninguna serie]</option>
-            <option value="pico">[Boku no pico]</option>
-            <option value="naruto">[Naruto]</option>
-            <option value="bleach">[Bleach]</option>
-            <option value="dragon">[Dragon Ball Z]</option>
+        <select name="lsAnime" id=""> 
+            <option value="">[Ninguna serie]</option>
+            <option value="pico" <?php echo ($lsAnime=="pico")?"selected":"";?>>[Boku no pico]</option>
+            <option value="naruto" <?php echo ($lsAnime=="naruto")?"selected":"";?>>[Naruto]</option>
+            <option value="bleach" <?php echo ($lsAnime=="bleach")?"selected":"";?>>[Bleach]</option>
+            <option value="dragon" <?php echo ($lsAnime=="dragon")?"selected":"";?>>[Dragon Ball Z]</option>
         </select>
         <br>
         <input type="submit" value="Enviar Informacion">
