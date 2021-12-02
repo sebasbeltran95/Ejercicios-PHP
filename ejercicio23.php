@@ -8,15 +8,19 @@ $chkcss="";
 
 $lsAnime="";
 
+$txtComentario="";
+
 if($_POST){
     $txtNombre=(isset($_POST['txtNombre']))?$_POST['txtNombre']:"";
     $rdg_lenguaje=(isset($_POST['lenguaje']))?$_POST['lenguaje']:"";
-
     $chkphp=(isset($_POST['chkphp']) == "si")?"checked":"";
     $chkhtml=(isset($_POST['chkhtml']) == "si")?"checked":"";
     $chkcss=(isset($_POST['chkcss']) == "si")?"checked":"";
-
     $lsAnime=(isset($_POST['lsAnime']))?$_POST['lsAnime']:"";
+    $txtComentario=(isset($_POST['txtComentario']))?$_POST['txtComentario']:"";
+    // instruccion de insertar
+    // rutina de algun calculo
+    // aqui puedes alterar esos valores para msotrar diferentes valoresn modificados
 
     // print_r($_POST);
     // print_r($_POST);
@@ -37,13 +41,14 @@ if($_POST){
     <br>
     <strong>El lenguaje que te gusta es:</strong>:  <?php echo $rdg_lenguaje;?> 
     <br>
-    <strong>Estas aprendiendo:</strong>: 
+    <strong>Estas aprendiendo:</strong> <br>
     - <?php echo ($chkphp == "checked")?"php":"";?> <br>
     - <?php echo ($chkhtml == "checked")?"html":"";?> <br>
     - <?php echo ($chkcss == "checked")?"css":"";?> <br>
     <br>
-    <strong>Que anime te gusta:</strong>:
-    <?php echo $lsAnime;?>
+    <strong>Que anime te gusta:</strong> <?php echo $lsAnime;?>
+    <br>
+    <strong>Tu mensaje es:</strong> <?php echo $txtComentario;?>
     <br>
    <?php }?>
     <form action="ejercicio23.php" method="POST">
@@ -70,6 +75,11 @@ if($_POST){
             <option value="bleach" <?php echo ($lsAnime=="bleach")?"selected":"";?>>[Bleach]</option>
             <option value="dragon" <?php echo ($lsAnime=="dragon")?"selected":"";?>>[Dragon Ball Z]</option>
         </select>
+        <br>
+        ¿Tienes alguna duda?.. <br>
+        <textarea name="txtComentario" id="" cols="30" rows="10">
+            <?php echo $txtComentario?>
+        </textarea>
         <br>
         <input type="submit" value="Enviar Informacion">
     </form>
