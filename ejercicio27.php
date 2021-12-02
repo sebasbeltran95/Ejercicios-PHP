@@ -1,9 +1,10 @@
 <!-- consumir una api en php -->
 <!-- ejemplo consumo api https://developer.dailymotion.com/ -->
 <?php
+// identificamos la url
 $url="https://api.dailymotion.com/videos?channel=sport&limit=10";
 
-
+// le pusimos opciones para que nos deje leer
 $opciones = array("ssl"=>array("verify_peer"=>false,"verify_peer_name"=>false));
 
 // una funcion que me permite leer todo el contenido y convertirlo a un string para que nosotros podamos
@@ -19,7 +20,13 @@ $objRespuesta = json_decode($respuesta);
 foreach($objRespuesta->list as $video){
 
     // print_r($video);
-    print_r($video->title);
-    print_r($video->channel);
+    // print_r($video->title);
+    // print_r($video->channel);
 }
 
+?>
+    <ul>
+        <?php foreach($objRespuesta->list as $video){ ?>
+            <li><?php echo ($video->title); ?> | <?php echo ($video->channel); ?> </li>
+        <?php } ?>
+    </ul>
