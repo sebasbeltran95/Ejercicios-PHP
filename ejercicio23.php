@@ -1,15 +1,22 @@
 <?php
 $txtNombre="";
 $rdg_lenguaje="";
+
 $chkphp="";
 $chkhtml="";
 $chkcss="";
+
+$lsAnime="";
+
 if($_POST){
     $txtNombre=(isset($_POST['txtNombre']))?$_POST['txtNombre']:"";
     $rdg_lenguaje=(isset($_POST['lenguaje']))?$_POST['lenguaje']:"";
+
     $chkphp=(isset($_POST['chkphp']) == "si")?"checked":"";
     $chkhtml=(isset($_POST['chkhtml']) == "si")?"checked":"";
     $chkcss=(isset($_POST['chkcss']) == "si")?"checked":"";
+
+    $lsAnime=(isset($_POST['lsAnime'])?$_POST['lsAnime']:"");
 
     // print_r($_POST);
     // print_r($rdg_lenguaje);
@@ -46,7 +53,15 @@ if($_POST){
         <br> html : <input type="checkbox" <?php echo $chkhtml; ?> name="chkhtml" value="si" id="">
         <br> css :  <input type="checkbox" <?php echo $chkcss; ?> name="chkcss" value="si" id="">
         <br>
-        <select name="" id="" disabled="disabled"></select>
+        ¿Que anime te gusta?.. <br>
+        <!-- solo se peude seleccionar una opcion no varias -->
+        <select name="lsAnime" id="" disabled="disabled"> 
+            <option value="ninguna">[Ninguna serie]</option>
+            <option value="pico">[Boku no pico]</option>
+            <option value="naruto">[Naruto]</option>
+            <option value="bleach">[Bleach]</option>
+            <option value="dragon">[Dragon Ball Z]</option>
+        </select>
         <br>
         <input type="submit" value="Enviar Informacion">
     </form>
