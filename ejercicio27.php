@@ -18,7 +18,8 @@ $objRespuesta = json_decode($respuesta);
 
 foreach($objRespuesta->list as $video){
 
-    print_r($video);
-
+    // print_r($video);
+    print_r($video->title);
+    print_r($video->channel);
 }
 
